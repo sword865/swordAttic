@@ -13,7 +13,7 @@ Comment json -- Adding "json" causes ToJSON and FromJSON instances to be derived
     userId UserId Maybe sqltype=varchar(255) default=NULL
     deriving Eq
     deriving Show
-Post
+Post json
     title Text
     posted UTCTime
     updated UTCTime "default=CURRENT_TIMESTAMP"

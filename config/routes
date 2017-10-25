@@ -8,4 +8,6 @@
 
 /comments CommentR POST
 
+/posts PostR POST
+
 /profile ProfileR GET
