@@ -9,12 +9,14 @@ Email
     verkey Text Maybe sqltype=varchar(255) default=NULL
     UniqueEmail email
 Comment json -- Adding "json" causes ToJSON and FromJSON instances to be derived.
+    post PostId
     message Text sqltype=varchar(255)
     userId UserId Maybe sqltype=varchar(255) default=NULL
+    posted UTCTime
     deriving Eq
     deriving Show
 Post json
-    title Text
+    title Text sqltype=varchar(255)
     posted UTCTime
     updated UTCTime "default=CURRENT_TIMESTAMP"
     summary Text

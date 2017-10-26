@@ -15,6 +15,7 @@ dependencies:
 - yesod-auth >=1.4.0 && <1.5
 - yesod-static >=1.4.0.3 && <1.6
 - yesod-form >=1.4.0 && <1.5
+- yesod-newsfeed >= 1.4.0  && <1.7
 - yesod-persistent >= 1.4.1.1
 - classy-prelude >=0.10.2
 - classy-prelude-conduit >=0.10.2
@@ -22,6 +23,7 @@ dependencies:
 - text >=0.11 && <2.0
 - markdown > 0.1.15
 - persistent >=2.0 && <2.8
+- persistent-template >= 2.1
 - persistent-mysql >=2.1.2 && <2.8
 - mysql >= 0.1.4
 - persistent-template >=2.0 && <2.8

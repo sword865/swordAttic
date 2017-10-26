@@ -1,17 +1,29 @@
+{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE TypeFamilies #-}
 module Handler.Post where
 
 import Import
 
-postPostR :: Handler Value
-postPostR = do
-    -- requireJsonBody will parse the request body into the appropriate type, or return a 400 status code if the request JSON is invalid.
-    -- (The ToJSON and FromJSON instances are derived in the config/models file).
-    post <- (requireJsonBody :: Handler Post)
-
-    -- The YesodAuth instance in Foundation.hs defines the UserId to be the type used for authentication.
-    -- maybeCurrentUserId <- maybeAuthId
-    -- let comment' = comment { commentUserId = maybeCurrentUserId }
-
-    insertedPost <- runDB $ insertEntity post
-    returnJson insertedPost
-
+getPostR :: PostId -> Handler Html
+getPostR postId= do
+    (post, comments) <- runDB $ do
+        post <- get404 postId
+        comments <- selectList [CommentPost ==. postId] []
+        return (post, comments)
+    defaultLayout $ do
+        setTitle . toHtml $ postTitle post <> "'s User page"
+        $(widgetFile "post")
+--     muser <- maybeAuth
+--     mCommentWidget <-
+--       case muser of
+--         Nothing -> return Nothing
+--         Just _  -> generateFormPost (commentForm postId) >>= return . Just
+--     extra <- getExtra
+--     let pagename = extraPagename extra
+--     (_, user) <- requireAuthPair
+--     defaultLayout $ do
+--         setTitle . toHtml $ userIdent user <> "'s User page"
+--         $(widgetFile "profile")
