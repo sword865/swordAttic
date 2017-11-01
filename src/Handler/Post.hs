@@ -14,7 +14,7 @@ getPostR postId= do
         comments <- selectList [CommentPost ==. postId] []
         return (post, comments)
     defaultLayout $ do
-        setTitle . toHtml $ postTitle post <> "'s User page"
+        setTitle . toHtml $ "悟剑阁" <> "-" <> postTitle post
         $(widgetFile "post")
 --     muser <- maybeAuth
 --     mCommentWidget <-

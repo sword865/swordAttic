@@ -21,8 +21,8 @@ Post json
     updated UTCTime "default=CURRENT_TIMESTAMP"
     summary Text
     content Markdown
-Tag
-    name Text sqltype=varchar(255)
-    UniqueTag name
+PostTag
+    post PostId
+    tag Text sqltype=varchar(255)
 
  -- By default this file is used in Model.hs (which is imported by Foundation.hs)
