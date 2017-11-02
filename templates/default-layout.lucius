@@ -68,6 +68,10 @@
   margin-bottom: 0;
 }
 
+img {
+    max-width: 100%;
+}
+
 #message {
     margin-bottom: 40px;
 }

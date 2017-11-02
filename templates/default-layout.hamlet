@@ -40,7 +40,7 @@ $if (Just HomeR == mcurrentRoute)
 $else
     <div .container>
         <div .row>
-            <div .col-md-12>
+            <div .col-md-10.col-md-offset-1>
                 ^{widget}
 
 <!-- Footer -->

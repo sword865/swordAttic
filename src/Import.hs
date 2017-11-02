@@ -5,6 +5,7 @@ module Import
 import Foundation            as Import
 import Import.NoFoundation   as Import
 import Data.Text as T
+import Data.Time (UTCTime)
 
 required :: FieldView app -> Text
 required fv = case fvRequired fv of
@@ -28,3 +29,6 @@ mapSnd3 f (x, y, z) = (x, f y, z)
 
 fst3 :: (a, b, c) -> a
 fst3 (x, _, _) = x
+
+renderAsDate :: UTCTime -> String
+renderAsDate utcTime = formatTime defaultTimeLocale "%Y/%m/%d" utcTime

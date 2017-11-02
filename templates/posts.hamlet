@@ -1,8 +1,9 @@
-<div .ui.container>
+<div .ui>
 
+    <ul>
     $forall Entity postId post <- posts
-        <div>
-            <h3>
-                <a href=@{PostR postId}>#{postTitle post}</a>
+        <li>
+            <a href=@{PostR postId}>#{postTitle post}</a>
+            \ - #{renderAsDate $ postPosted post}
 
 
