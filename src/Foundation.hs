@@ -190,6 +190,7 @@ instance Yesod App where
 instance YesodBreadcrumbs App where
   breadcrumb HomeR = return ("Home", Nothing)
   breadcrumb PostsR = return ("Posts", Just HomeR)
+  breadcrumb (PostR _)= return ("Post", Just PostsR)
   breadcrumb (AuthR _) = return ("Login", Just HomeR)
   breadcrumb ProfileR = return ("Profile", Just HomeR)
   breadcrumb  _ = return ("home", Nothing)

@@ -72,6 +72,10 @@ img {
     max-width: 100%;
 }
 
+.bottom{
+    text-align: center;
+}
+
 #message {
     margin-bottom: 40px;
 }
