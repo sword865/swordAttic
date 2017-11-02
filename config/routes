@@ -11,4 +11,6 @@
 /post NewPostR POST
 /post/#PostId PostR GET
 
+/posts PostsR GET
+
 /profile ProfileR GET

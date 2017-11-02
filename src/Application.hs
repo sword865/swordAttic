@@ -52,6 +52,7 @@ import Handler.Common
 import Handler.Home
 import Handler.Comment
 import Handler.Post
+import Handler.Posts
 import Handler.NewPost
 import Handler.Profile
 

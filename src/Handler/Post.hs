@@ -16,14 +16,3 @@ getPostR postId= do
     defaultLayout $ do
         setTitle . toHtml $ "悟剑阁" <> "-" <> postTitle post
         $(widgetFile "post")
---     muser <- maybeAuth
---     mCommentWidget <-
---       case muser of
---         Nothing -> return Nothing
---         Just _  -> generateFormPost (commentForm postId) >>= return . Just
---     extra <- getExtra
---     let pagename = extraPagename extra
---     (_, user) <- requireAuthPair
---     defaultLayout $ do
---         setTitle . toHtml $ userIdent user <> "'s User page"
---         $(widgetFile "profile")

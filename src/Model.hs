@@ -12,6 +12,7 @@ module Model where
 import ClassyPrelude.Yesod
 import Database.Persist.Quasi
 import Data.Time (UTCTime)
+import Data.Int (Int8)
 import Text.Markdown
 import Utils.Markdown ()
 

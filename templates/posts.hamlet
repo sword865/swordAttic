@@ -1,0 +1,8 @@
+<div .ui.container>
+
+    $forall Entity postId post <- posts
+        <div>
+            <h3>
+                <a href=@{PostR postId}>#{postTitle post}</a>
+
+

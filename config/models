@@ -20,6 +20,7 @@ Post json
     posted UTCTime
     updated UTCTime "default=CURRENT_TIMESTAMP"
     summary Text
+    status Int8
     content Markdown
 PostTag
     post PostId
