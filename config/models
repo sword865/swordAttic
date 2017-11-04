@@ -1,8 +1,10 @@
 User
-    ident Text sqltype=varchar(255)
     email Text sqltype=varchar(255)
-    password Text sqltype=varchar(255)
-    UniqueUser ident
+    password Text Maybe -- Password may not be set yet
+    name Text Maybe
+    verkey Text Maybe -- Used for resetting passwords
+    verified Bool
+    UniqueUser email
     deriving Typeable
 Comment json -- Adding "json" causes ToJSON and FromJSON instances to be derived.
     post PostId
