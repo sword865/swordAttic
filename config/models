@@ -1,17 +1,14 @@
 User
     ident Text sqltype=varchar(255)
-    password Text Maybe sqltype=varchar(255) default=NULL
+    email Text sqltype=varchar(255)
+    password Text sqltype=varchar(255)
     UniqueUser ident
     deriving Typeable
-Email
-    email Text sqltype=varchar(255)
-    userId UserId Maybe sqltype=varchar(255) default=NULL
-    verkey Text Maybe sqltype=varchar(255) default=NULL
-    UniqueEmail email
 Comment json -- Adding "json" causes ToJSON and FromJSON instances to be derived.
     post PostId
     message Text sqltype=varchar(255)
-    userId UserId Maybe sqltype=varchar(255) default=NULL
+    user Text sqltype=varchar(255)
+    userMail Text sqltype=varchar(255)
     posted UTCTime
     deriving Eq
     deriving Show

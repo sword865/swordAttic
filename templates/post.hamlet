@@ -1,6 +1,15 @@
 <div>
-
     <h1>
       #{postTitle post}
     <div>
       #{postContent post}
+    <div>
+    <br>
+    $if (not $ null comments)
+        <h4>评论
+        $forall Entity commentId (Comment _post message user email posted) <- comments
+            <div>
+                <span>#{show user}
+                <span>#{show message}
+    $else
+        <h4>暂时还没有评论，欢迎留言。

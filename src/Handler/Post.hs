@@ -11,9 +11,9 @@ getPostR :: PostId -> Handler Html
 getPostR postId= do
     (post, comments) <- runDB $ do
         post <- get404 postId
-        comments <- selectList [CommentPost ==. postId] []
+        comments <- selectList [CommentPost ==. postId] [Desc CommentPosted]
         return (post, comments)
     defaultLayout $ do
         setTitle . toHtml $ "悟剑阁" <> "-" <> postTitle post
-        addScriptRemote $ "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+        addScriptRemote "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
         $(widgetFile "post")
