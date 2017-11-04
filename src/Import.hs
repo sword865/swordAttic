@@ -6,6 +6,12 @@ import Foundation            as Import
 import Import.NoFoundation   as Import
 import Data.Text as T
 import Data.Time (UTCTime)
+import qualified Data.ByteString.Lazy as LB
+import Data.Digest.Pure.MD5 (md5)
+import Data.Text.Encoding
+
+avatarUrl :: Text -> String
+avatarUrl email =  show (md5 (Import.encodeUtf8  (fromStrict email)))
 
 required :: FieldView app -> Text
 required fv = case fvRequired fv of

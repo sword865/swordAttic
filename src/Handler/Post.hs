@@ -7,6 +7,7 @@ module Handler.Post where
 
 import Import
 
+
 getPostR :: PostId -> Handler Html
 getPostR postId= do
     (post, comments) <- runDB $ do

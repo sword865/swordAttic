@@ -8,7 +8,7 @@ User
     deriving Typeable
 Comment json -- Adding "json" causes ToJSON and FromJSON instances to be derived.
     post PostId
-    message Text sqltype=varchar(255)
+    message Markdown sqltype=varchar(1000)
     user Text sqltype=varchar(255)
     userMail Text sqltype=varchar(255)
     posted UTCTime
