@@ -9,6 +9,10 @@ $(function() {
         var message = $("##{rawJS commentTextareaId}").val();
         var user = $("##{rawJS commentUserId}").val();
         var userMail = $("##{rawJS commentUserEmailId}").val();
+        var userSite = $("##{rawJS commentUserSiteId}").val();
+        if(!userSite.startsWith("http://") && !userSite.startsWith("https://")){
+            userSite = "http://" + userSite
+        }
         // (Browsers that enforce the "required" attribute on the textarea won't see this alert)
         if (!message) {
             alert("Please fill out the comment form first.");
@@ -26,7 +30,8 @@ $(function() {
                     markdown: message
                 },
                 user: user,
-                userMail: userMail
+                userMail: userMail,
+                userSite: userSite
             }),
             success: function (data) {
                 window.history.go(0)

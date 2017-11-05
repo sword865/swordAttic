@@ -36,5 +36,18 @@ mapSnd3 f (x, y, z) = (x, f y, z)
 fst3 :: (a, b, c) -> a
 fst3 (x, _, _) = x
 
-renderAsDate :: UTCTime -> String
-renderAsDate utcTime = formatTime defaultTimeLocale "%Y/%m/%d" utcTime
+renderAsDate :: Bool -> UTCTime -> String
+renderAsDate showHour utcTime =
+    if showHour then
+        formatTime defaultTimeLocale "%Y/%m/%d %H:%M" utcTime
+    else
+        formatTime defaultTimeLocale "%Y/%m/%d" utcTime
+
+
+renderMaybeAsDate :: Bool -> Maybe UTCTime -> String
+renderMaybeAsDate showHour utcTime =
+    case str of
+        Just s -> s
+        Nothing -> ""
+    where
+        str = fmap (renderAsDate showHour) utcTime

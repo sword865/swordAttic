@@ -4,6 +4,6 @@
     $forall Entity postId post <- posts
         <li>
             <a href=@{PostR postId}>#{postTitle post}</a>
-            \ - #{renderAsDate $ postPosted post}
+            \ - #{renderAsDate False $ postPosted post}
 
 

@@ -8,20 +8,27 @@
     $if (not $ null comments)
         <h4>评论
         <ol .comt-list>
-            $forall Entity commentId (Comment _post message user email posted) <- comments
+            $forall Entity commentId (Comment _post message user email site posted) <- comments
                 <li>
                     <div .comt-avatar>
                         <img src="https://cdn.v2ex.com/gravatar/#{avatarUrl email}.png">
                     <div .comt-main>
                         <p>#{message}
-                        <div .comt-meta>#{show user}  发表于 #{renderAsDate $ postPosted post}
+                        <div .comt-meta>
+                            $if (not $ null site)
+                                <a href=#{site}>
+                                    #{user}
+                                \  发表于 #{renderMaybeAsDate True posted}
+                            $else
+                                #{user}  发表于 #{renderMaybeAsDate True posted}
     $else
         <h4>暂时还没有评论，欢迎留言。
 
     <form .form-horizontal ##{commentFormId}>
-        <textarea .comment rows="2" ##{commentTextareaId} placeholder="Your comment here..." required></textarea>
+        <textarea .comment rows="2" ##{commentTextareaId} placeholder="来说两句吧..." required></textarea>
         <div .comt-comterinfo>
-            <input ##{commentUserId} placeholder="Your Name here" required></input>
-            <input ##{commentUserEmailId} placeholder="Your Email here..." required></input>
+            <input ##{commentUserId} placeholder="用户名(必填)" required></input>
+            <input ##{commentUserEmailId} placeholder="邮箱(必填）" required></input>
+            <input ##{commentUserSiteId} placeholder="网址(选填)" ></input>
             <p>
-            <button .btn.btn-primary type=submit>Create comment
+            <button .btn.btn-primary type=submit>评论

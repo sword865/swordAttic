@@ -11,6 +11,7 @@ Comment json -- Adding "json" causes ToJSON and FromJSON instances to be derived
     message Markdown sqltype=varchar(1000)
     user Text sqltype=varchar(255)
     userMail Text sqltype=varchar(255)
+    userSite Text sqltype=varchar(255)
     posted UTCTime Maybe
     deriving Eq
     deriving Show
