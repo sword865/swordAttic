@@ -3,11 +3,12 @@ $(function() {
         event.preventDefault();
 
         var message = $("##{rawJS commentTextareaId}").val();
-        var user = $("##{rawJS commentUserId}").val();
-        var userMail = $("##{rawJS commentUserEmailId}").val();
-        var userSite = $("##{rawJS commentUserSiteId}").val();
-        if(!userSite.startsWith("http://") && !userSite.startsWith("https://")){
-            userSite = "http://" + userSite
+        var user = $("##{rawJS commentUserId}").val().trim() ;
+        var userMail = $("##{rawJS commentUserEmailId}").val().trim() ;
+        var userSite = $("##{rawJS commentUserSiteId}").val().trim();
+        console.log(userSite);
+        if(!userSite.startsWith("http://") && !userSite.startsWith("https://") && userSite != ""){
+            userSite = "http://" + userSite;
         }
         // (Browsers that enforce the "required" attribute on the textarea won't see this alert)
         if (!message) {
