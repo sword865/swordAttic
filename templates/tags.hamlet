@@ -1,0 +1,9 @@
+<div .ui>
+
+    <ul>
+    $forall (name, count) <- tagCount
+        <li>
+            <a href=@{TagR name}>#{name}(#{count})</a>
+
+
+

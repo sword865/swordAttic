@@ -2,13 +2,19 @@
     <h1>
       #{postTitle post}
     <div>
+        <ul .tag-list>
+            <li>标签：
+            $forall Entity _ (PostTag _ name) <- tags
+                <li>
+                    <a href=@{TagR name}>#{name}</a>
+    <div>
       #{postContent post}
     <div>
     <br>
     $if (not $ null comments)
         <h4>评论
         <ol .comt-list>
-            $forall Entity commentId (Comment _post message user email site posted) <- comments
+            $forall Entity _ (Comment _post message user email site posted) <- comments
                 <li>
                     <div .comt-avatar>
                         <img src="https://cdn.v2ex.com/gravatar/#{avatarUrl email}.png">

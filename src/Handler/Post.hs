@@ -6,16 +6,16 @@
 module Handler.Post where
 
 import Import
-import Yesod.Form.Bootstrap3 (BootstrapFormLayout (..), renderBootstrap3)
 import Text.Julius (RawJS (..))
 import Database.Persist.Sql(fromSqlKey)
 
 getPostR :: PostId -> Handler Html
 getPostR postId= do
-    (post, comments) <- runDB $ do
+    (post, tags, comments) <- runDB $ do
         post <- get404 postId
+        tags <- selectList [PostTagPost ==. postId] []
         comments <- selectList [CommentPost ==. postId] [Desc CommentPosted]
-        return (post, comments)
+        return (post, tags, comments)
     defaultLayout $ do
         let (commentFormId, commentTextareaId, commentUserId, commentUserEmailId, commentUserSiteId) = commentIds
         setTitle . toHtml $ "悟剑阁" <> "-" <> postTitle post

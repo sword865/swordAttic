@@ -1,0 +1,9 @@
+<div .ui>
+
+    <ul>
+    $forall (E.Value postId, E.Value title, E.Value posted, E.Value _) <- posts
+        <li>
+            <a href=@{PostR postId}>#{title}</a>
+            \ - #{renderAsDate False posted}
+
+

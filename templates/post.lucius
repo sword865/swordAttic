@@ -1,3 +1,16 @@
+.tag-list {
+    list-style:none;
+    padding:0;
+    margin:0;
+    display:inline-block;
+}
+
+.tag-list li{
+    float: left;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+
 .comt-list {
     padding: 0;
     list-style: none;

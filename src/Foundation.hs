@@ -108,6 +108,11 @@ instance Yesod App where
                     , menuItemAccessCallback = True
                     }
                 , NavbarLeft $ MenuItem
+                    { menuItemLabel = "标签列表"
+                    , menuItemRoute = TagsR
+                    , menuItemAccessCallback = True
+                    }
+                , NavbarLeft $ MenuItem
                     { menuItemLabel = "我的"
                     , menuItemRoute = ProfileR
                     , menuItemAccessCallback = isJust muser
@@ -145,6 +150,8 @@ instance Yesod App where
     isAuthorized HomeR _ = return Authorized
     isAuthorized (PostR _) _ = return Authorized
     isAuthorized PostsR _= return Authorized
+    isAuthorized (TagR _) _ = return Authorized
+    isAuthorized TagsR _ = return Authorized
     isAuthorized NewPostR _= return Authorized
     isAuthorized FaviconR _ = return Authorized
     isAuthorized RobotsR _ = return Authorized
@@ -184,6 +191,8 @@ instance Yesod App where
 instance YesodBreadcrumbs App where
   breadcrumb HomeR = return ("Home", Nothing)
   breadcrumb PostsR = return ("Posts", Just HomeR)
+  breadcrumb TagsR = return ("Tags", Just HomeR)
+  breadcrumb (TagR _) = return ("Tag", Just TagsR)
   breadcrumb (PostR _)= return ("Post", Just PostsR)
   breadcrumb (AuthR _) = return ("Login", Just HomeR)
   breadcrumb ProfileR = return ("Profile", Just HomeR)

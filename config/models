@@ -24,6 +24,6 @@ Post json
     content Markdown
 PostTag
     post PostId
-    tag Text sqltype=varchar(255)
+    name Text sqltype=varchar(255)
 
  -- By default this file is used in Model.hs (which is imported by Foundation.hs)

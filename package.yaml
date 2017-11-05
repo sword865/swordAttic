@@ -43,6 +43,7 @@ dependencies:
 - fast-logger >=2.2 && <2.5
 - wai-logger >=2.2 && <2.4
 - pureMD5 >= 2.1
+- esqueleto
 - file-embed
 - safe
 - unordered-containers
