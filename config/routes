@@ -6,7 +6,7 @@
 
 / HomeR GET POST
 
-/comments CommentR POST
+/comment CommentR POST
 
 /post NewPostR POST
 /post/#PostId PostR GET

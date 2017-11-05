@@ -17,3 +17,9 @@
                         <div .comt-meta>#{show user}  发表于 #{renderAsDate $ postPosted post}
     $else
         <h4>暂时还没有评论，欢迎留言。
+
+    <form .form-horizontal ##{commentFormId}>
+        <textarea rows="2" ##{commentTextareaId} placeholder="Your comment here..." required></textarea>
+        <input ##{commentUserId} placeholder="Your Name here" required></input>
+        <input ##{commentUserEmailId} placeholder="Your Email here..." required></input>
+        <button .btn.btn-primary type=submit>Create comment
