@@ -16,7 +16,7 @@
     margin-top: -21px;
     color: white;
     text-align: center;
-    min-height: 500px;
+    min-height: 200px;
 }
 
 .masthead .header {
@@ -26,7 +26,7 @@
 }
 
 .masthead h1.header {
-    margin-top: 1em;
+    margin-top: 0.2em;
     margin-bottom: 0em;
     font-size: 4.5em;
     line-height: 1.2em;

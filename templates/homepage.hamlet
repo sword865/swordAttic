@@ -2,48 +2,45 @@
     <div .container>
         <div .row>
             <h1 .header>
-                Yesod—a modern framework for blazing fast websites
+                悟剑阁
             <h2>
-                Fast, stable & spiced with great community
-            <a href="http://www.yesodweb.com/book/" .btn.btn-info.btn-lg>
-                Read the Book
+                阁中悟剑，红尘练心
+            <ul .social-list>
+                <li>
+                    <i class="fa fa-github">
+                    <a href="https://github.com/sword865">Github</a>
+                <li>
+                    <i class="fa fa-weibo">
+                    <a href="http://weibo.com/luosha865">微博</a>
+                <li>
+                    <i class="fa fa-twitter">
+                    <a href="https://twitter.com/sword865">Twitter</a>
 
 <div .container>
     <!-- Starting
         ================================================== -->
     <div .bs-docs-section>
         <div .row>
-            <div .col-lg-12>
+            <div .col-md-10.col-md-offset-1.col-xs-12>
                 <div .page-header>
-                    <h1 #start>Starting
-
-                    <p>
-                        Now that you have a working project you should use the
-                        <a href=http://www.yesodweb.com/book/>Yesod book</a> to learn more.
-                    <p>
-                        You can also use this scaffolded site to explore some concepts, and best practices.
-
+                    <h1 #start>最近发表
                     <ul .list-group>
-
+                    $forall Entity postId post <- recentPosts
                         <li .list-group-item>
-                            A Widget's Html, Css and Javascript are separated in three files with the
-                            <tt>.hamlet</tt>, <tt>.lucius</tt> and <tt>.julius</tt> extensions.
-
-                        <li .list-group-item>
-                            A Widget's Html, Css and Javascript are separated in three files with the
-                            <tt>.hamlet</tt>, <tt>.lucius</tt> and <tt>.julius</tt> extensions.
+                            <a href=@{PostR postId}>#{postTitle post}</a>
+                            \ - #{renderAsDate False $ postPosted post}
 
     <hr>
     <!-- Testing
        ================================================== -->
     <div .bs-docs-section>
        <div .row>
-           <div .col-lg-12>
+           <div .col-md-10.col-md-offset-1.col-xs-12>
                <div .page-header>
-                   <h1 #test>Testing
-
+                   <h1 #test>关于
                    <p>
-                       And last but not least, Testing. In <tt>test/Spec.hs</tt> you will find a #
-                       test suite that performs tests on this page.
+                    这里是我的个人博客。
                    <p>
-                       You can run your tests by doing: <code>stack test</code>
+                       一名对PL很感兴趣的推荐/搜索系统工程师。
+                   <p>
+                        本站源码： <a href="https://github.com/sword865/swordAttic">swordAttic</a>
