@@ -11,7 +11,7 @@
             $forall Entity _ (PostTag _ name) <- tags
                 <li>
                     <a href=@{TagR name}>#{name}</a>
-    <div>
+    <div .main-content>
       #{postContent post}
     <div>
     <br>
