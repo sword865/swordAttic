@@ -54,6 +54,7 @@ import Handler.Comment
 import Handler.Post
 import Handler.Posts
 import Handler.NewPost
+import Handler.Edit
 import Handler.Profile
 import Handler.Tag
 import Handler.Tags
