@@ -8,6 +8,7 @@
 
 /comment CommentR POST
 
+/create CreatePostR GET
 /post NewPostR POST
 /post/#PostId PostR GET
 

@@ -152,10 +152,13 @@ instance Yesod App where
     isAuthorized PostsR _= return Authorized
     isAuthorized (TagR _) _ = return Authorized
     isAuthorized TagsR _ = return Authorized
-    isAuthorized NewPostR _= return Authorized
     isAuthorized FaviconR _ = return Authorized
     isAuthorized RobotsR _ = return Authorized
     isAuthorized (StaticR _) _ = return Authorized
+
+    -- TODO: set to isAuthenticated
+    isAuthorized NewPostR _ = return Authorized
+    isAuthorized CreatePostR _= return Authorized
 
     isAuthorized ProfileR _ = isAuthenticated
 
@@ -196,6 +199,7 @@ instance YesodBreadcrumbs App where
   breadcrumb (PostR _)= return ("Post", Just PostsR)
   breadcrumb (AuthR _) = return ("Login", Just HomeR)
   breadcrumb ProfileR = return ("Profile", Just HomeR)
+  breadcrumb CreatePostR = return ("Create", Just HomeR)
   breadcrumb  _ = return ("home", Nothing)
 
 -- How to run database actions.
