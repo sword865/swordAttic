@@ -10,6 +10,7 @@
 
 /create CreatePostR GET
 /post NewPostR POST
+/edit/#PostId EditR GET
 /post/#PostId PostR GET
 
 /tags TagsR GET

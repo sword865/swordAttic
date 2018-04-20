@@ -1,3 +1,7 @@
+.main-content{
+    word-wrap: break-word;
+}
+
 .tag-list {
     list-style:none;
     padding:0;
