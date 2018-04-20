@@ -8,9 +8,10 @@
 
 /comment CommentR POST
 
-/create CreatePostR GET
 /post NewPostR POST
-/edit/#PostId EditR GET
+
+/create CreatePostR GET
+/edit/#PostId EditR GET POST
 /post/#PostId PostR GET
 
 /tags TagsR GET

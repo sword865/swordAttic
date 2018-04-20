@@ -1,9 +1,0 @@
-<div .post>
-    <div>
-        <input ##{postTitle} .title.form-control placeholder="标题" required>
-    <div>
-        <textarea ##{postContent} .content.form-control placeholder="正文(markdown)">
-    <div>
-        <input ##{postTags} .tags.form-control placeholder="标签(;分隔)" required>
-    <div>
-        <button .btn.btn-primary type=submit>提交

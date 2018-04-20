@@ -24,7 +24,7 @@ data FileForm = FileForm
 -- inclined, or create a single monolithic file.
 getHomeR :: Handler Html
 getHomeR = do
-    recentPosts <- runDB $ selectList [PostStatus==. 1] [Desc PostPosted, LimitTo 5]
+    recentPosts <- runDB $ selectList [PostStatus==. 1] [Desc PostPosted, LimitTo 2]
     defaultLayout $ do
         setTitle  $ "欢迎来到" <>"悟剑阁"
         $(widgetFile "homepage")

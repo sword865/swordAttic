@@ -159,8 +159,11 @@ instance Yesod App where
     -- TODO: set to isAuthenticated
     isAuthorized NewPostR _ = return Authorized
     isAuthorized CreatePostR _= return Authorized
+    isAuthorized (EditR _) _ = return Authorized
 
     isAuthorized ProfileR _ = isAuthenticated
+
+    isAuthorized _ _ = return Authorized
 
     -- This function creates static content files in the static folder
     -- and names them based on a hash of their content. This allows
