@@ -45,6 +45,8 @@ import Network.Wai.Middleware.RequestLogger (Destination (Logger),
                                              mkRequestLogger, outputFormat)
 import System.Log.FastLogger                (defaultBufSize, newStdoutLoggerSet,
                                              toLogStr)
+import Network.Wai.Handler.WarpTLS (runTLS, tlsSettings, TLSSettings)
+import qualified Data.Text as T
 
 -- Import all relevant handler modules here.
 -- Don't forget to add new modules to your cabal file!
@@ -163,6 +165,14 @@ getApplicationDev = do
 getAppSettings :: IO AppSettings
 getAppSettings = loadYamlSettings [configSettingsYml] [] useEnv
 
+-- | get tlsS for https
+getTlsS :: IO TLSSettings
+getTlsS = do
+  settings <- getAppSettings
+  fullchain <- return $ T.unpack (appFullchainFile settings)
+  privkey <- return $ T.unpack (appPrivkeyFile settings)
+  return (tlsSettings fullchain privkey)
+
 -- | main function for use by yesod devel
 develMain :: IO ()
 develMain = develMainHelper getApplicationDev
@@ -185,7 +195,9 @@ appMain = do
     app <- makeApplication foundation
 
     -- Run the application with Warp
-    runSettings (warpSettings foundation) app
+    -- runSettings (warpSettings foundation) app
+    tlsS <- getTlsS
+    runTLS tlsS (warpSettings foundation) app
 
 
 --------------------------------------------------------------
