@@ -1,9 +1,8 @@
 <div .post>
+    <!--<p>Result: #{show result}-->
     $if (fromSqlKey postId == 0)
         <form method=post action=@{NewPostR} enctype=#{enctype}>
             ^{widget}
-            <p>It also doesn't include the submit button.
     $else
         <form method=post action=@{EditR postId} enctype=#{enctype}>
             ^{widget}
-            <button>Submit

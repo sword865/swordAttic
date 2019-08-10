@@ -1,0 +1,19 @@
+##{fvId titleView} {
+     width: 100%;
+     margin-bottom: 10px;
+}
+
+##{fvId contentView} {
+     width: 100%;
+     margin-bottom: 10px;
+     height: 400px;
+}
+
+##{fvId tagsView} {
+     width: 100%;
+     margin-bottom: 10px;
+}
+
+.editor-label {
+     text-align: left;
+}

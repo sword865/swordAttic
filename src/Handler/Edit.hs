@@ -7,13 +7,18 @@ module Handler.Edit where
 
 import Import
 import Utils.ArticlePost
+import Yesod.Text.Markdown (markdownField)
 import Database.Persist.Sql (toSqlKey, fromSqlKey)
 
+
 articlePostForm :: Html -> MForm Handler (FormResult ArticlePost, Widget)
-articlePostForm = renderDivs $ ArticlePost
-    <$> areq textField "title" Nothing
-    <*> areq textareaField "content" Nothing
-    <*> areq urlField "tags" Nothing
+articlePostForm extra = do
+    (titleRes, titleView) <- mreq textField "title" Nothing
+    (contentRes, contentView) <- mreq markdownField "content" Nothing
+    (tagsRes, tagsView) <- mreq textField "tags" Nothing
+    let articlePostRes = ArticlePost <$> titleRes <*> contentRes <*> tagsRes
+    let widget = $(widgetFile "edit-form")
+    return (articlePostRes, widget)
 
 
 getEditR :: PostId -> Handler Html

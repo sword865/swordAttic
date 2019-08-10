@@ -1,11 +1,11 @@
 module Utils.ArticlePost where
 
 import Data.Text (Text)
-import Yesod.Form.Fields (Textarea)
+import Text.Markdown (Markdown)
 
 data ArticlePost = ArticlePost
     { atriclePostTitle :: Text
-    , atriclePostContent :: Textarea
+    , atriclePostContent :: Markdown
     , atriclePostTags :: Text
     }
   deriving Show
