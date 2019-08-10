@@ -23,7 +23,7 @@ postNewPostR = do
             let post = Post (atriclePostTitle atricle) now now "" 1 (atriclePostContent atricle)
             postId <- runDB $ insert post
             let postTags = map (\x-> PostTag postId x) $ split (==',') (atriclePostTags atricle)
-            runDB $ forM postTags insert
+            _ <- runDB $ forM postTags insert
             redirect $ PostR postId
         _ ->
             defaultLayout $ do

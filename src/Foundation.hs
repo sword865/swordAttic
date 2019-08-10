@@ -113,6 +113,11 @@ instance Yesod App where
                     , menuItemAccessCallback = True
                     }
                 , NavbarLeft $ MenuItem
+                    { menuItemLabel = "新建"
+                    , menuItemRoute = CreatePostR
+                    , menuItemAccessCallback = isJust muser
+                    }
+                , NavbarLeft $ MenuItem
                     { menuItemLabel = "我的"
                     , menuItemRoute = ProfileR
                     , menuItemAccessCallback = isJust muser
@@ -157,13 +162,12 @@ instance Yesod App where
     isAuthorized (StaticR _) _ = return Authorized
 
     -- TODO: set to isAuthenticated
-    isAuthorized NewPostR _ = return Authorized
-    isAuthorized CreatePostR _= return Authorized
-    isAuthorized (EditR _) _ = return Authorized
-
+    isAuthorized NewPostR _ = isAuthenticated
+    isAuthorized CreatePostR _= isAuthenticated
+    isAuthorized (EditR _) _ = isAuthenticated
     isAuthorized ProfileR _ = isAuthenticated
 
-    isAuthorized _ _ = return Authorized
+--     isAuthorized _ _ = return Authorized
 
     -- This function creates static content files in the static folder
     -- and names them based on a hash of their content. This allows
