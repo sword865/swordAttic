@@ -53,8 +53,10 @@ data AppSettings = AppSettings
     -- ^ Assume that files in the static dir may change after compilation
     , appSkipCombining          :: Bool
     -- ^ Perform no stylesheet/script combining
-
+    
     -- Example app-specific configuration values.
+    , appFullchainFile              :: Text
+    , appPrivkeyFile                :: Text
     , appCopyright              :: Text
     -- ^ Copyright text to appear in the footer of the page
     , appAnalytics              :: Maybe Text
@@ -84,6 +86,9 @@ instance FromJSON AppSettings where
         appReloadTemplates        <- o .:? "reload-templates" .!= defaultDev
         appMutableStatic          <- o .:? "mutable-static"   .!= defaultDev
         appSkipCombining          <- o .:? "skip-combining"   .!= defaultDev
+
+        appFullchainFile             <- o .: "fullchain-file"
+        appPrivkeyFile               <- o .: "privkey-file"
 
         appCopyright              <- o .:  "copyright"
         appAnalytics              <- o .:? "analytics"

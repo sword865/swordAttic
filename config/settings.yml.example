@@ -32,5 +32,8 @@ database:
   database: "_env:MYSQL_DATABASE:swordAttic"
   poolsize: "_env:MYSQL_POOLSIZE:10"
 
+fullchain-file: fullchain.pem
+privkey-file: privkey.pem
+
 copyright: Insert copyright statement here
 #analytics: UA-YOURCODE
