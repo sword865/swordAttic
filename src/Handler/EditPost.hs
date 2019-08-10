@@ -10,6 +10,7 @@ import Text.Markdown (Markdown)
 import Utils.ArticlePost
 import Handler.Edit (articlePostForm, toPostId)
 import Database.Persist.Sql (toSqlKey, fromSqlKey)
+import Data.Text (split)
 
 postNewPostR :: Handler Html
 postNewPostR = do
@@ -21,6 +22,8 @@ postNewPostR = do
             now <- liftIO getCurrentTime
             let post = Post (atriclePostTitle atricle) now now "" 1 (atriclePostContent atricle)
             postId <- runDB $ insert post
+            let postTags = map (\x-> PostTag postId x) $ split (==',') (atriclePostTags atricle)
+            runDB $ forM postTags insert
             redirect $ PostR postId
         _ ->
             defaultLayout $ do
