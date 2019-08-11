@@ -99,6 +99,9 @@ tests:
     - hspec >=2.0.0
     - yesod-test
 
+default-extensions:
+  - DeriveGeneric
+
 # Define flags used by "yesod devel" to make compilation faster
 flags:
   library-only:

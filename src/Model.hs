@@ -14,7 +14,7 @@ import Database.Persist.Quasi
 import Data.Time (UTCTime)
 import Data.Int (Int8)
 import Text.Markdown
-import Utils.Markdown ()
+import Yesod.Text.Markdown (markdownField)
 
 -- You can define all of your database entities in the entities file.
 -- You can find more information on persistent and how to declare entities
