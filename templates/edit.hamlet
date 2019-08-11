@@ -1,5 +1,4 @@
 <div .post>
-    <!--<p>Result: #{show result}-->
     $if (fromSqlKey postId == 0)
         <form method=post action=@{NewPostR} enctype=#{enctype}>
             ^{widget}

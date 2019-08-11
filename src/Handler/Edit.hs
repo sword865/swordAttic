@@ -11,11 +11,11 @@ import Yesod.Text.Markdown (markdownField)
 import Database.Persist.Sql (toSqlKey, fromSqlKey)
 
 
-articlePostForm :: Html -> MForm Handler (FormResult ArticlePost, Widget)
-articlePostForm extra = do
-    (titleRes, titleView) <- mreq textField "title" Nothing
-    (contentRes, contentView) <- mreq markdownField "content" Nothing
-    (tagsRes, tagsView) <- mreq textField "tags" Nothing
+articlePostForm :: Maybe ArticlePost -> Html -> MForm Handler (FormResult ArticlePost, Widget)
+articlePostForm maybeArticle extra = do
+    (titleRes, titleView) <- mreq textField "title" (atriclePostTitle <$> maybeArticle)
+    (contentRes, contentView) <- mreq markdownField "content" (atriclePostContent <$> maybeArticle)
+    (tagsRes, tagsView) <- mreq textField "tags" (atriclePostTags <$> maybeArticle)
     let articlePostRes = ArticlePost <$> titleRes <*> contentRes <*> tagsRes
     let widget = $(widgetFile "edit-form")
     return (articlePostRes, widget)
@@ -23,8 +23,13 @@ articlePostForm extra = do
 
 getEditR :: PostId -> Handler Html
 getEditR postId = do
-    (widget, enctype) <- generateFormPost articlePostForm
-    let (title, content) = ("", "")
+    (post, tags) <- runDB $ do
+        post <- get404 postId
+        tags <- selectList [PostTagPost ==. postId] []
+        return (post, tags)
+    let artTags = intercalate "," $ map (postTagName . entityVal) tags
+    let article = ArticlePost (postTitle post) (postContent post) artTags
+    (widget, enctype) <- generateFormPost $ articlePostForm (Just article)
     defaultLayout $ do
         setTitle . toHtml $ ("悟剑阁-"::Text)
         $(widgetFile "edit")
@@ -38,7 +43,7 @@ fromPostId = fromSqlKey
 getCreatePostR :: Handler Html
 getCreatePostR = do
     let postId = toPostId 0
-    (widget, enctype) <- generateFormPost articlePostForm
+    (widget, enctype) <- generateFormPost (articlePostForm Nothing)
     defaultLayout $ do
         setTitle $ "悟剑阁" <> "-" <> "新建文章"
         $(widgetFile "edit")

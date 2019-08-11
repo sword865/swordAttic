@@ -16,7 +16,7 @@ postNewPostR :: Handler Html
 postNewPostR = do
     -- requireJsonBody will parse the request body into the appropriate type, or return a 400 status code if the request JSON is invalid.
     -- (The ToJSON and FromJSON instances are derived in the config/models file).
-    ((result, widget), enctype)  <- runFormPost articlePostForm
+    ((result, widget), enctype)  <- runFormPost (articlePostForm Nothing)
     case result of
         FormSuccess atricle -> do
             now <- liftIO getCurrentTime
