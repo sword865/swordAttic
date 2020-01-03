@@ -1,0 +1,14 @@
+#{extra}
+
+<div .col-md-8 .col-md-offset-1 .col-xs-12>
+    <div .editor-label>
+        标题
+    ^{fvInput titleView}
+    <div .editor-label>
+        正文
+    ^{fvInput contentView}
+    <div .editor-label>
+        标签
+    ^{fvInput tagsView}
+    <br>
+    <input type=submit value="submit">

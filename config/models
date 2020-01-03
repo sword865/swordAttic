@@ -25,5 +25,8 @@ Post json
 PostTag
     post PostId
     name Text sqltype=varchar(255)
+    UniquePostTag post name
+    deriving Show
+
 
  -- By default this file is used in Model.hs (which is imported by Foundation.hs)

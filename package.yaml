@@ -22,6 +22,7 @@ dependencies:
 - bytestring >=0.9 && <0.11
 - text >=0.11 && <2.0
 - markdown > 0.1.15
+- yesod-text-markdown >= 0.1.10
 - persistent >=2.0 && <2.8
 - persistent-template >= 2.1
 - persistent-mysql >=2.1.2 && <2.8
@@ -97,6 +98,9 @@ tests:
     - swordAttic
     - hspec >=2.0.0
     - yesod-test
+
+default-extensions:
+  - DeriveGeneric
 
 # Define flags used by "yesod devel" to make compilation faster
 flags:
