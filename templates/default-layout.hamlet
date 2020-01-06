@@ -50,6 +50,7 @@ $else
             #{appCopyright $ appSettings master}
         <p .text-muted>
             内容基于<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">CC BY-SA 4.0</a>授权.
-    <div style="width:300px;margin:0 auto; padding:20px 0;">
-        <a target="_blank" href="http://www.beian.miit.gov.cn">备案号：沪ICP备17046163号-1</a>
-        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502012095" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">沪公网安备 31011502012095号</p></a>
+        <p .text-muted>
+           <a target="_blank" href="http://www.beian.miit.gov.cn">互联网ICP备案：沪ICP备17046163号-1</a>
+        <p .text-muted>
+            <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502012095" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px;>沪公网安备 31011502012095号</p></a>
